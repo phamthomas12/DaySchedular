@@ -23,6 +23,17 @@ $(document).ready(function () {
          
         } 
      }
+     //Clear all button 
+     $( document ).ready(function() {
+
+        var clearBtn = $(`<button>`);
+        clearBtn.addClass("clear-button")
+        clearBtn.text("Clear All")
+        $("#clear-btn-div").append(clearBtn);
+        clearBtn.on('click', function(){
+            $('.description').val("");
+            localStorage.clear();
+    })
     //save button event listener to save any tasks into the local storage 
     $(".saveBtn").click(
         function() {
@@ -35,4 +46,6 @@ $(document).ready(function () {
 
          }
     )
+    
+        });
 });
