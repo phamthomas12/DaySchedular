@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    let momentVar = moment().format("dddd, MMMM Do YYYY, h:mm:ss a");
+    let momentVar = moment().format("dddd, MMMM Do YYYY, h:mm a");
     
     //display current day at top of calender
     function displayDate() {
@@ -7,6 +7,7 @@ $(document).ready(function () {
         return currentDay;
     }
     displayDate()
+   
 
     let task = []
     // retrieve any pre-exsisting tasks from local storage
@@ -46,6 +47,26 @@ $(document).ready(function () {
 
          }
     )
+    //Styling based on current time
+    var currentHour = moment().hour();
     
-        });
+    $(".description").each(function() {
+        var blockHour = parseInt($(this).attr("id").split("-")[1]);
+        if (currentHour > blockHour) {
+            $(this).addClass("past");
+        } else if (currentHour === blockHour) {
+            $(this).remove("past");
+            $(this).addClass("present");
+        } else if (currentHour < blockHour) {
+            $(this).remove("past");
+            $(this).remove("present");
+            $(this).addClass("future");
+        }
+            
+
+    });
+            
+    })
+   
+
 });
