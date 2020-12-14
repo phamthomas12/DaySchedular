@@ -49,9 +49,11 @@ $(document).ready(function () {
     )
     //Styling based on current time
     var currentHour = moment().hour();
+    console.log(currentHour);
     
     $(".description").each(function() {
         var blockHour = parseInt($(this).attr("id").split("-")[1]);
+        console.log(blockHour);
         if (currentHour > blockHour) {
             $(this).addClass("past");
         } else if (currentHour === blockHour) {
